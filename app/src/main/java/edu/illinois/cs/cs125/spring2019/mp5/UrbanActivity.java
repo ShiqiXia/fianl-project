@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +15,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 import edu.illinois.cs.cs125.spring2019.lab12.R;
+import edu.illinois.cs.cs125.spring2019.mp5.lib.JsonConveter;
 
 public class UrbanActivity extends AppCompatActivity {
 
@@ -35,8 +35,13 @@ public class UrbanActivity extends AppCompatActivity {
                                 + input;
                 JsonGetter(toUrl);
                 final TextView define = findViewById(R.id.result);
-                JsonConveter newJson = new JsonConvetor();
-                String toSet = newJson.converter(define.getText());
+                JsonConveter newJson = new JsonConveter();
+                String[] toSet = newJson.converter(define.getText().toString());
+                String toReturn = "";
+                for (int i = 0; i < toSet.length; i ++) {
+                    toReturn += toSet[i];
+                }
+                define.setText(toReturn);
             }
         });
     }

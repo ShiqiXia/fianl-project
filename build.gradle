@@ -1,5 +1,4 @@
 apply plugin: 'checkstyle'
-
 buildscript {
     repositories {
         google()
@@ -37,7 +36,7 @@ checkstyle {
     toolVersion "8.16"
     configFile = new File(rootDir, "config/checkstyle.xml")
 }
-task checkstyleMain (type: Checkstyle) {
+task checkstyleMain(type: Checkstyle) {
     source 'app/src/main'
     include '**/*.java'
     exclude '**/gen/**'
@@ -46,5 +45,6 @@ task checkstyleMain (type: Checkstyle) {
     classpath = files()
     ignoreFailures = true
 }
-
 // vim: ts=4:sw=4:et:ft=groovy
+dependencies {
+}
